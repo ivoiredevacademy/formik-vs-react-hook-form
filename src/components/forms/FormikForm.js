@@ -11,7 +11,9 @@ const FormikForm = () => {
         passwordConfirmation: ''
     };
 
-    const { values, handleChange, handleBlur, isSubmitting, isValid, touched, handleSubmit, resetForm, errors } = useFormik({
+    const { values, handleChange, handleBlur,
+        isSubmitting, isValid, touched, handleSubmit,
+        resetForm, errors } = useFormik({
         initialValues,
         validationSchema,
         onSubmit
