@@ -1,11 +1,11 @@
 import React from "react";
 import AppLayout from "./components/layouts/AppLayout";
-import HookForm from "./components/forms/HookForm";
+import FormikForm from "./components/forms/FormikForm";
 
 function App() {
   return (
       <AppLayout>
-        <HookForm />
+        <FormikForm />
       </AppLayout>
   );
 }

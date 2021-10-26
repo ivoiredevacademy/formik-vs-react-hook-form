@@ -1,5 +1,5 @@
 import React from "react";
-import Team from "../illustrations/Team";
+import Team from "../illustrations/Team"
 
 
 function AppLayout({ children }) {

@@ -5,7 +5,7 @@ import validationSchema from '../../utils/ValidationSchema'
 import { yupResolver } from "@hookform/resolvers/yup";
 
 function HookForm() {
-    const  { register, handleSubmit, formState: { errors }, reset } = useForm({
+    const  { register, handleSubmit, formState: { errors, isSubmitting, isValid }, reset, setError } = useForm({
         mode: "onBlur",
         resolver: yupResolver(validationSchema)
     });
@@ -14,8 +14,14 @@ function HookForm() {
         try {
             await registerApi(formValues);
             reset();
-        } catch (error) {
-            console.error(error);
+        } catch ({ errors }) {
+           
+            for(let key in errors) {
+                setError(key,{
+                    type: "manual",
+                    message: errors[key]
+                });
+            }
         }
     }
 
@@ -59,7 +65,9 @@ function HookForm() {
                     }
                 </div>
                 <div className="my-4">
-                    <button className="btn" type="submit">S'inscrire</button>
+                    <button className="btn" type="submit"
+                        disabled={isSubmitting || !isValid }
+                    >S'inscrire</button>
                 </div>
             </form>
         </div>

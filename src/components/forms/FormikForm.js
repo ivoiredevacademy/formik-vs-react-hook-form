@@ -11,8 +11,10 @@ const FormikForm = () => {
         passwordConfirmation: ''
     };
 
-    const { values, handleChange, handleBlur,
-        isSubmitting, isValid, touched, handleSubmit,
+    const { 
+        values, handleChange, handleBlur,
+        isSubmitting, isValid, touched, 
+        handleSubmit, setFieldError,
         resetForm, errors } = useFormik({
         initialValues,
         validationSchema,
@@ -23,8 +25,11 @@ const FormikForm = () => {
         try {
             await register(formValues);
             resetForm();
-        } catch (error) {
-            console.error(error);
+            alert("Inscription effectuée avec succès :)")
+        } catch ({ errors }) {
+            for(let key in errors) {
+                setFieldError(key, errors[key]);
+            }
         }
     }
 
