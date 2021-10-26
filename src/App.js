@@ -1,11 +1,11 @@
 import React from "react";
 import AppLayout from "./components/layouts/AppLayout";
-import FormikForm from "./components/forms/FormikForm";
+import BaseForm from "./components/forms/BaseForm";
 
 function App() {
   return (
       <AppLayout>
-        <FormikForm />
+        <BaseForm />
       </AppLayout>
   );
 }
